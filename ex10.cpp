@@ -22,6 +22,7 @@ int main(){
 	for(int i=0;i<n;i++){
 		printf("%d \t",*(arr+i));
 	}
+	free(arr);
 	return 0;
 }
 
@@ -33,12 +34,13 @@ int main(){
   		return 0;
   		
 	  }
-  	arr = realloc(arr,(*n -1)*sizeof(int));
   	for(int i=index;i<*n;i++){
   		*(arr+i)=*(arr+i+1);
 	  }
 
         (*n)--;
+        arr = realloc(arr,(*n -1)*sizeof(int));
+
   }
 
 
