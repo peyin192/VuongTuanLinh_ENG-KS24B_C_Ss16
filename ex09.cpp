@@ -2,7 +2,7 @@
 
 void addNumber(int *arr, int number, int index);
 
-int main(void) {
+int main() {
     int arr[6] = {1, 2, 3, 4, 5};
     int length = 5, number, index;
 
