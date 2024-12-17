@@ -1,41 +1,51 @@
 #include <stdio.h>
+#include <stdlib.h>
+int addElement(int *arr,int value,int index, int *n);
 
-void addNumber(int *arr, int number, int index);
-
-int main() {
-    int arr[6] = {1, 2, 3, 4, 5};
-    int length = 5, number, index;
-
-    for (int i = 0; i < length; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-
-    printf("Moi ban nhap phan tu muon them: ");
-    scanf("%d", &number);
-    printf("Moi ban nhap vi tri muon them: ");
-    scanf("%d", &index);
-
-    if (index < 0 || index > length) {
-        printf("Vi tri khong hop le\n");
-        return 1;
-    }
-
-    addNumber(arr, number, index);
-    length++;
-
-    for (int i = 0; i < length; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-
-    return 0;
+//arr = realloc(arr,(*n+1)*sizeof(int));
+int main(){
+	int *arr;
+	int n;
+	
+	printf("Nhap so phan tu: ");
+	scanf("%d",&n);
+	
+	arr = (int *)malloc(n*sizeof(int));
+	for(int i=0;i<n;i++){
+		printf("Nhap phan tu thu %d: ",i+1);
+		scanf("%d",arr+i);
+	}
+	addElement(arr,30,3,&n);
+	
+	
+	
+	for(int i=0;i<n;i++){
+		printf("%d \t",*(arr+i));
+	}
+	return 0;
 }
 
-void addNumber(int *arr, int number, int index) {
-    for (int i = 5; i > index; i--) {
-        arr[i] = arr[i - 1];
-    }
-    arr[index] = number;
-}
+
+//trien khai ham
+  int addElement(int *arr,int value,int index, int *n){
+  	//truoc khi them phai kiem tra xem vi tri muon them co thoa man hay khong.
+  	if(index<0||index>*n){
+  		printf("Vi tri them khong hop le");
+  		
+  		return 0;
+  		
+	  }
+  	//vi tri them thoa man
+  	//cap phat them o nho cho mang
+  	arr = realloc(arr,(*n +1)*sizeof(int));
+  	//tien hanh dich chuyen phan tu
+  	for(int i=*n;i>index;i--){
+  		*(arr+i)=*(arr+i-1);
+	  }
+	  *(arr+index)=value;
+	    *(arr+index)=value;
+        (*n)++;
+  }
+
+
 
